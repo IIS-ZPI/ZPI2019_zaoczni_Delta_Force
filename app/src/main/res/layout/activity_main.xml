@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DELTA FORCE\n Scrum Master/Devops Github ID 202131\n Developer Github ID adann96\n Developer Github ID lukaszk960214\n Tester/developer Github ID patryk_badowski@o2.pl "
+        android:text="DELTA FORCE\n Scrum Master/Devops Github ID 202131\n Developer Github ID adann96\n Developer Github ID lukaszk960214\n Tester/developer Github ID patryk_badowski@o2.pl\n Developer Github ID adam96212 "
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
