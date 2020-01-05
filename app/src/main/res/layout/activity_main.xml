@@ -7,13 +7,57 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="32dp"
         android:text="DELTA FORCE\n Scrum Master/Devops Github ID 202131\n Developer Github ID adann96\n Developer Github ID lukaszk960214\n Tester/developer Github ID patryk_badowski@o2.pl\n Developer Github ID adam96212 "
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/sesjeWzrostowe"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sesjeWzrostowe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="106dp"
+        android:width="200dp"
+        android:text="Sesje Wzrostowe"
+        app:layout_constraintBottom_toTopOf="@+id/miaryStatystyczne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/kursyWalut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="106dp"
+        android:width="200dp"
+        android:text="Kursy Walut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/miaryStatystyczne" />
+
+    <Button
+        android:id="@+id/miaryStatystyczne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="106dp"
+        android:width="200dp"
+        android:text="Miary Statystyczne"
+        app:layout_constraintBottom_toTopOf="@+id/kursyWalut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sesjeWzrostowe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
