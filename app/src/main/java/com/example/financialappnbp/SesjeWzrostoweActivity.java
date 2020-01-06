@@ -3,7 +3,9 @@ package com.example.financialappnbp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,10 +16,18 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     private ListView list;
     private ListView listCurr;
 
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesje_wzrostowe);
+
+        checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
+        checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
+        checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
+        checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
+        checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
 
         list = (ListView) findViewById(R.id.listViewForSessions);
         String sessions[] = {"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
@@ -29,4 +39,40 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
         list.setAdapter(arrayAdapter);
     }
+
+    public void onClickCheckBox1(View v) {
+            checkBox2.setChecked(false);
+            checkBox3.setChecked(false);
+            checkBox4.setChecked(false);
+            checkBox5.setChecked(false);
+    }
+
+    public void onClickCheckBox2(View v) {
+            checkBox1.setChecked(false);
+            checkBox3.setChecked(false);
+            checkBox4.setChecked(false);
+            checkBox5.setChecked(false);
+    }
+
+    public void onClickCheckBox3(View v) {
+            checkBox1.setChecked(false);
+            checkBox2.setChecked(false);
+            checkBox4.setChecked(false);
+            checkBox5.setChecked(false);
+    }
+
+    public void onClickCheckBox4(View v) {
+            checkBox1.setChecked(false);
+            checkBox2.setChecked(false);
+            checkBox3.setChecked(false);
+            checkBox5.setChecked(false);
+    }
+
+    public void onClickCheckBox5(View v) {
+            checkBox1.setChecked(false);
+            checkBox2.setChecked(false);
+            checkBox3.setChecked(false);
+            checkBox4.setChecked(false);
+    }
+
 }

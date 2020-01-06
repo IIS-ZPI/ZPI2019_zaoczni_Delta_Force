@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="false"
     tools:context=".SesjeWzrostoweActivity">
 
     <CheckBox
@@ -13,6 +14,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="80dp"
+        android:onClick="onClickCheckBox5"
         android:text="RU"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/listViewForSessions"
@@ -42,12 +44,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
+        android:onClick="onClickCheckBox1"
         android:text="USD"
         app:layout_constraintBottom_toTopOf="@+id/checkBox3"
         app:layout_constraintEnd_toStartOf="@+id/checkBox2"
@@ -61,10 +64,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="32dp"
+        android:onClick="onClickCheckBox2"
         android:text="GBP"
         app:layout_constraintBottom_toTopOf="@+id/checkBox4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <CheckBox
@@ -73,10 +77,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="24dp"
+        android:onClick="onClickCheckBox3"
         android:text="EUR"
         app:layout_constraintEnd_toStartOf="@+id/checkBox4"
         app:layout_constraintStart_toEndOf="@+id/listViewForSessions"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox1" />
 
     <CheckBox
         android:id="@+id/checkBox4"
@@ -84,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
+        android:onClick="onClickCheckBox4"
         android:text="CHF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/checkBox3"
