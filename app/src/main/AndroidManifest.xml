@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SesjeWzrostoweActivity"></activity>
+        <activity android:name=".Miarystatystyczne"></activity>
+        <activity android:name=".SesjeWzrostoweActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

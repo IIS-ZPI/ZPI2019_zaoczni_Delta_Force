@@ -7,12 +7,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SesjeWzrostoweActivity extends AppCompatActivity {
+public class Miarystatystyczne extends AppCompatActivity {
 
     private ListView list;
     private ListView listCurr;
@@ -22,7 +21,7 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sesje_wzrostowe);
+        setContentView(R.layout.activity_miarystatystyczne);
 
         checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -41,43 +40,38 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         list.setAdapter(arrayAdapter);
     }
 
-    public void onClickPatrykowy(View w) {
-        Toast.makeText(getApplicationContext(),"Giorgios Vielkypenis",Toast.LENGTH_SHORT);
-    }
-
     public void onClickCheckBox1(View v) {
-            checkBox2.setChecked(false);
-            checkBox3.setChecked(false);
-            checkBox4.setChecked(false);
-            checkBox5.setChecked(false);
+        checkBox2.setChecked(false);
+        checkBox3.setChecked(false);
+        checkBox4.setChecked(false);
+        checkBox5.setChecked(false);
     }
 
     public void onClickCheckBox2(View v) {
-            checkBox1.setChecked(false);
-            checkBox3.setChecked(false);
-            checkBox4.setChecked(false);
-            checkBox5.setChecked(false);
+        checkBox1.setChecked(false);
+        checkBox3.setChecked(false);
+        checkBox4.setChecked(false);
+        checkBox5.setChecked(false);
     }
 
     public void onClickCheckBox3(View v) {
-            checkBox1.setChecked(false);
-            checkBox2.setChecked(false);
-            checkBox4.setChecked(false);
-            checkBox5.setChecked(false);
+        checkBox1.setChecked(false);
+        checkBox2.setChecked(false);
+        checkBox4.setChecked(false);
+        checkBox5.setChecked(false);
     }
 
     public void onClickCheckBox4(View v) {
-            checkBox1.setChecked(false);
-            checkBox2.setChecked(false);
-            checkBox3.setChecked(false);
-            checkBox5.setChecked(false);
+        checkBox1.setChecked(false);
+        checkBox2.setChecked(false);
+        checkBox3.setChecked(false);
+        checkBox5.setChecked(false);
     }
 
     public void onClickCheckBox5(View v) {
-            checkBox1.setChecked(false);
-            checkBox2.setChecked(false);
-            checkBox3.setChecked(false);
-            checkBox4.setChecked(false);
+        checkBox1.setChecked(false);
+        checkBox2.setChecked(false);
+        checkBox3.setChecked(false);
+        checkBox4.setChecked(false);
     }
-
 }

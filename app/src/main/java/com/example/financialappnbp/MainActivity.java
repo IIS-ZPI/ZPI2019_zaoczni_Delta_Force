@@ -57,15 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*
+
         miaryStatystyczne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, *******.class);
+                Intent intent = new Intent(MainActivity.this, Miarystatystyczne.class);
                 startActivity(intent);
             }
         });
 
+        /*
         kursyWalut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,14 +74,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
-    }
-
-    private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
     }
 }
