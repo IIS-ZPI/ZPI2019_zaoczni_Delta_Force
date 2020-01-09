@@ -1,9 +1,10 @@
 package com.example.financialappnbp;
+import com.example.financialappnbp.mathInterface.IArithmeticsDiff;
 import com.example.financialappnbp.mathInterface.IArithmeticsDiv;
 import com.example.financialappnbp.mathInterface.IArithmeticsAdd;
 import com.example.financialappnbp.mathInterface.IArithmeticsMult;
 
-public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult {
+public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult, IArithmeticsDiff {
 
     @Override
     public double Division(double A, double B) {
@@ -20,4 +21,8 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult 
         return A + B;
     }
 
+    @Override
+    public double Difference(double A, double B) {
+        return A-B;
+    }
 }
