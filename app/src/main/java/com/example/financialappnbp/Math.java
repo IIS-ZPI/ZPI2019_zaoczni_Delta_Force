@@ -1,4 +1,11 @@
 package com.example.financialappnbp;
 
-public class Math {
+import com.example.financialappnbp.mathInterface.IArithmeticsAdd;
+
+public class Math implements IArithmeticsAdd {
+
+    @Override
+    public double Addition(double A, double B) {
+        return A + B;
+    }
 }
