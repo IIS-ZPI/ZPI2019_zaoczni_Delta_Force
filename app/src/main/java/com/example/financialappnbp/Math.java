@@ -6,6 +6,7 @@ import com.example.financialappnbp.mathInterface.IArithmeticsMult;
 
 public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult, IArithmeticsDiff {
 
+    //Dzielenie
     @Override
     public double Division(double A, double B) {
         return A / B;
