@@ -11,6 +11,7 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
         return A / B;
     }
 
+    /*Try to multiply two values*/
     @Override
     public double Multiplication(double A, double B) {
         return A * B;
