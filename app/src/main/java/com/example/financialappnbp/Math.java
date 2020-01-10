@@ -8,7 +8,7 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
 
     @Override
     public double Division(double A, double B) {
-        return A / B; // return results division
+        return A / B;
     }
 
     @Override
