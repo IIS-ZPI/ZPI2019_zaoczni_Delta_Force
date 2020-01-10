@@ -8,7 +8,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);//komentarz2
         setContentView(R.layout.activity_main);
         Math math = new Math();
         System.out.println("dodawanie"+math.Addition(5,2));
