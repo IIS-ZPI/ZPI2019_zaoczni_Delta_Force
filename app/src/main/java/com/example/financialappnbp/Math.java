@@ -4,7 +4,7 @@ import com.example.financialappnbp.mathInterface.IArithmeticsDiv;
 import com.example.financialappnbp.mathInterface.IArithmeticsAdd;
 import com.example.financialappnbp.mathInterface.IArithmeticsMult;
 
-public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult, IArithmeticsDiff {
+public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult, IArithmeticsDiff { //implements interface IArithmeticsDiv
 
     @Override
     public double Division(double A, double B) {
