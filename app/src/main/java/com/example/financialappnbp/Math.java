@@ -8,7 +8,7 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
 
     @Override
     public double Division(double A, double B) {
-        return A / B; //Comment needed to accomplish the task
+        return A / B;
     }
 
     /*Try to multiply two values*/
@@ -17,7 +17,7 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
         return A * B;
     }
 
-    /*Addition of two values*/
+    /*Addition of two values*/g
     @Override
     public double Addition(double A, double B) {
         return A + B;
