@@ -11,16 +11,19 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
         return A / B;
     }
 
+    /*Try to multiply two values*/
     @Override
     public double Multiplication(double A, double B) {
         return A * B;
     }
 
+    /*Addition of two values*/g
     @Override
     public double Addition(double A, double B) {
         return A + B;
     }
 
+    /*Difference between values a and b*/
     @Override
     public double Difference(double A, double B) {
         return A-B;
