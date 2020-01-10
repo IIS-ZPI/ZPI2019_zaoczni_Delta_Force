@@ -22,6 +22,7 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
         return A + B;
     }
 
+    //Ten będzie do revertu
     @Override
     public double Difference(double A, double B) {
         return A-B;
