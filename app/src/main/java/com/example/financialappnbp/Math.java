@@ -21,6 +21,7 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
         return A + B;
     }
 
+    /*Difference between values a and b*/
     @Override
     public double Difference(double A, double B) {
         return A-B;
