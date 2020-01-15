@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.example.financialappnbp.model.Waluta;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
 
 public class SesjeWzrostoweActivity extends AppCompatActivity {
 
@@ -18,6 +21,31 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     private ListView listCurr;
 
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+    public static String getData(final String url) {
+        final CountDownLatch latch = new CountDownLatch(1);
+        final String[] outputString = {null};
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run(){
+                String responseString = null;
+                OkHttpGetSender okHttpGetSender = new OkHttpGetSender();
+                try {
+                    responseString = okHttpGetSender.sendGet(url);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                outputString[0] = responseString;
+                latch.countDown();
+            }
+        });
+        thread.start();
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return outputString[0];
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +70,11 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     }
 
     public void onClickPatrykowy(View w) {
-        Toast.makeText(getApplicationContext(),"Giorgios Vielkypenis",Toast.LENGTH_SHORT);
+        Gson g = new Gson();
+        Waluta data = g.fromJson(getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json"), Waluta.class);
+        System.out.println(data);
+        String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
+        System.out.println(data1);
     }
 
     public void onClickCheckBox1(View v) {
