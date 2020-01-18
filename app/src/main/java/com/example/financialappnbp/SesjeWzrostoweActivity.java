@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.financialappnbp.model.Waluta;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 public class SesjeWzrostoweActivity extends AppCompatActivity {
@@ -58,15 +61,42 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
         checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
 
-        list = (ListView) findViewById(R.id.listViewForSessions);
-        String sessions[] = {"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
 
-        ArrayList<String> sessionSelect = new ArrayList<String>();
-        sessionSelect.addAll(Arrays.asList(sessions));
+        ListView lv = (ListView) findViewById(R.id.listViewForSessions);
+        final TextView tv2 = (TextView) findViewById(R.id.tv2);
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,sessionSelect);
+        String[] sessions = new String []{"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
 
-        list.setAdapter(arrayAdapter);
+        // Create a List from String Array elements
+        List<String> session_list = new ArrayList<String>(Arrays.asList(sessions));
+
+        // Create a ArrayAdapter from List
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, session_list);
+
+        // Populate ListView with items from ArrayAdapter
+        lv.setAdapter(arrayAdapter);
+
+        // Set an item click listener for ListView
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected item text from ListView
+                String selectedItem = (String) parent.getItemAtPosition(position);
+
+                // Display the selected item text on TextView
+                tv2.setText(selectedItem);
+            }
+        });
+//        list = (ListView) findViewById(R.id.listViewForSessions);
+//        String sessions[] = {"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
+//
+//        ArrayList<String> sessionSelect = new ArrayList<String>();
+//        sessionSelect.addAll(Arrays.asList(sessions));
+//
+//        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,sessionSelect);
+//
+//        list.setAdapter(arrayAdapter);
     }
 
     public void onClickPatrykowy(View w) {
