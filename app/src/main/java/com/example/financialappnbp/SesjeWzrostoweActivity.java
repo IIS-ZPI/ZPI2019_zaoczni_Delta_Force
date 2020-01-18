@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import com.example.financialappnbp.model.Waluta;
 import com.google.gson.Gson;
@@ -16,20 +19,27 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
 public class SesjeWzrostoweActivity extends AppCompatActivity {
 
     private ListView list;
     private ListView listCurr;
-
+    public Boolean Usd, Gbp, Eur, Chf, Ru;
+    public String currency;
+    public Date date;
+    public String url;
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
         final String[] outputString = {null};
-        Thread thread = new Thread(new Runnable(){
+        Thread thread = new Thread(new Runnable() {
             @Override
-            public void run(){
+            public void run() {
                 String responseString = null;
                 OkHttpGetSender okHttpGetSender = new OkHttpGetSender();
                 try {
@@ -54,6 +64,7 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesje_wzrostowe);
+
 
         checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -101,10 +112,43 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
     public void onClickPatrykowy(View w) {
         Gson g = new Gson();
-        Waluta data = g.fromJson(getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json"), Waluta.class);
-        System.out.println(data);
-        String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
-        System.out.println(data1);
+        if (Usd == true) {
+            currency = "usd";
+        } else if (Gbp == true) {
+            currency = "gbp";
+        } else if (Eur == true) {
+            currency="eur";
+        } else if (Chf==true){
+            currency="chf";
+        } else if (Ru==true) {
+            currency="ru";
+        }
+        String dateToday = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        Date currentDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        //ostatne tydzien
+       c.add(Calendar.WEEK_OF_MONTH, -1);
+        //ostatne 2 tyg
+       // c.add(Calendar.WEEK_OF_MONTH, -2);
+        //ostatni miesiąc
+       // c.add(Calendar.MONTH, -1);
+        //ostatni kwartał
+       // c.add(Calendar.MONTH, -3);
+        //ostatnie pół roku
+       // c.add(Calendar.MONTH, -6);
+        //ostatni rok
+       // c.add(Calendar.YEAR, -1);
+        Date currentDatePlusOne = c.getTime();
+        String dateFrom=dateFormat.format(currentDatePlusOne);
+        String date=dateFrom+"/"+dateToday;
+        System.out.println("dateFrom"+dateFrom);
+
+        url=("https://api.nbp.pl/api/exchangerates/rates/c/"+currency+"/"+date+"/?format=json");
+        System.out.println("url"+url);
+        Waluta data = g.fromJson(getData(url), Waluta.class);
+       // String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
+        //textview3.setText(data.getCurrency().toString());
     }
 
     public void onClickCheckBox1(View v) {
@@ -112,6 +156,12 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             checkBox3.setChecked(false);
             checkBox4.setChecked(false);
             checkBox5.setChecked(false);
+            Usd=true;
+            Gbp=false;
+            Eur=false;
+            Chf=false;
+            Ru=false;
+
     }
 
     public void onClickCheckBox2(View v) {
@@ -119,6 +169,11 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             checkBox3.setChecked(false);
             checkBox4.setChecked(false);
             checkBox5.setChecked(false);
+            Usd=false;
+            Gbp=true;
+            Eur=false;
+            Chf=false;
+            Ru=false;
     }
 
     public void onClickCheckBox3(View v) {
@@ -126,6 +181,11 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             checkBox2.setChecked(false);
             checkBox4.setChecked(false);
             checkBox5.setChecked(false);
+            Usd=false;
+            Gbp=false;
+            Eur=true;
+            Chf=false;
+            Ru=false;
     }
 
     public void onClickCheckBox4(View v) {
@@ -133,6 +193,11 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             checkBox2.setChecked(false);
             checkBox3.setChecked(false);
             checkBox5.setChecked(false);
+            Usd=false;
+            Gbp=false;
+            Eur=false;
+            Chf=true;
+            Ru=false;
     }
 
     public void onClickCheckBox5(View v) {
@@ -140,6 +205,11 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             checkBox2.setChecked(false);
             checkBox3.setChecked(false);
             checkBox4.setChecked(false);
+            Usd=false;
+            Gbp=false;
+            Eur=false;
+            Chf=false;
+            Ru=true;
     }
 
 }
