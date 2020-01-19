@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.financialappnbp.model.KursWaluty;
 import com.example.financialappnbp.model.Waluta;
 import com.google.gson.Gson;
 
@@ -160,8 +161,9 @@ public class Miarystatystyczne extends AppCompatActivity {
         url=("https://api.nbp.pl/api/exchangerates/rates/c/"+currency+"/"+date+"/?format=json");
         System.out.println("url"+url);
         Waluta data = g.fromJson(getData(url), Waluta.class);
-        // String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
-        //textview3.setText(data.getCurrency().toString());
+        for (KursWaluty waluty : data.getRates()){
+            System.out.println(waluty.getAsk()+  " + ");
+        }
     }
 
     public void onClickCheckBox1(View v) {

@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class KursWaluty {
     private String no;
     private String effectiveDate;
-    private float mid;
+    private float ask;
+    private float bid;
 }

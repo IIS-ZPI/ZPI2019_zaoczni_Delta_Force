@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import com.example.financialappnbp.model.KursWaluty;
 import com.example.financialappnbp.model.Waluta;
 import com.google.gson.Gson;
 
@@ -81,6 +82,8 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         final TextView tv2 = (TextView) findViewById(R.id.tv2);
 
         String[] sessions = new String []{"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
+
+        // Create a List from String Array elements
         List<String> session_list = new ArrayList<String>(Arrays.asList(sessions));
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, session_list);
@@ -160,7 +163,10 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         url=("https://api.nbp.pl/api/exchangerates/rates/c/"+currency+"/"+date+"/?format=json");
         System.out.println("url"+url);
         Waluta data = g.fromJson(getData(url), Waluta.class);
-       // String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
+        for (KursWaluty waluty : data.getRates()){
+            System.out.println(waluty.getAsk()+  " + ");
+        }
+        // String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
         //textview3.setText(data.getCurrency().toString());
     }
 
