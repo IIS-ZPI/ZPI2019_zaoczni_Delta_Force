@@ -17,6 +17,8 @@ import java.util.List;
 public class Miarystatystyczne extends AppCompatActivity {
 
     private ListView list;
+    private ListView listCurr;
+
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
 
     @Override
