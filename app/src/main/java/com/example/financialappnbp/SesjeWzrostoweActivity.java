@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.financialappnbp.model.Waluta;
 import com.google.gson.Gson;
@@ -19,6 +20,7 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
     private ListView list;
     private ListView listCurr;
+    private TextView textView3;
 
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     public static String getData(final String url) {
@@ -58,6 +60,8 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
         checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
 
+        textView3 = findViewById(R.id.textView3);
+
         list = (ListView) findViewById(R.id.listViewForSessions);
         String sessions[] = {"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
 
@@ -72,9 +76,9 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     public void onClickPatrykowy(View w) {
         Gson g = new Gson();
         Waluta data = g.fromJson(getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json"), Waluta.class);
+
         System.out.println(data);
-        String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
-        System.out.println(data1);
+        textView3.setText("Waluta: " + data.getCurrency().toString() + "Data: " + data.getRates().get(0).getEffectiveDate().toString());
     }
 
     public void onClickCheckBox1(View v) {

@@ -7,19 +7,22 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Miarystatystyczne extends AppCompatActivity {
+public class KursyWalut extends AppCompatActivity {
 
     private ListView list;
-    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+    private ListView listCurr;
+    private TextView textView3;
 
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_miarystatystyczne);
+        setContentView(R.layout.activity_kursy_walut);
 
         checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
