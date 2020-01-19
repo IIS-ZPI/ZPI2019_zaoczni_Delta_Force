@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,13 +29,14 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
     private ListView list;
     private ListView listCurr;
-    public Boolean Usd, Gbp, Eur, Chf, Ru;
+    public Boolean Usd=false, Gbp=false, Eur=false, Chf=false, Ru=false;
     public String currency;
     public Date date;
     public String url;
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String selectedItem;
+    Button patrykowy;
 
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
@@ -72,7 +74,8 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
         checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
         checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
-
+        final Button patrykowy = (Button)findViewById(R.id.button);
+        patrykowy.setEnabled(false);
 
         ListView lv = (ListView) findViewById(R.id.listViewForSessions);
         final TextView tv2 = (TextView) findViewById(R.id.tv2);
@@ -94,10 +97,18 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected item text from ListView
-                selectedItem = (String) parent.getItemAtPosition(position);
+                System.out.println("fdsfsd");
 
                 // Display the selected item text on TextView
-                tv2.setText(selectedItem);
+                selectedItem = (String) parent.getItemAtPosition(position);
+               if(Usd || Gbp || Eur || Chf || Ru){
+
+                   patrykowy.setEnabled(true);
+                  tv2.setText(selectedItem);
+               }
+             else{
+              }
+
             }
         });
     }
