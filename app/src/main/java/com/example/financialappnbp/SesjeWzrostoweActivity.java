@@ -81,25 +81,13 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         final TextView tv2 = (TextView) findViewById(R.id.tv2);
 
         String[] sessions = new String []{"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
-
-        // Create a List from String Array elements
         List<String> session_list = new ArrayList<String>(Arrays.asList(sessions));
-
-        // Create a ArrayAdapter from List
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, session_list);
-
-        // Populate ListView with items from ArrayAdapter
         lv.setAdapter(arrayAdapter);
-
-        // Set an item click listener for ListView
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Get the selected item text from ListView
-                System.out.println("fdsfsd");
-
-                // Display the selected item text on TextView
                 selectedItem = (String) parent.getItemAtPosition(position);
                if(Usd || Gbp || Eur || Chf || Ru){
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,12 +29,13 @@ public class Miarystatystyczne extends AppCompatActivity {
     private ListView list;
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     private ListView listCurr;
-    public Boolean Usd, Gbp, Eur, Chf, Ru;
+    public Boolean Usd=false, Gbp=false, Eur=false, Chf=false, Ru=false;
     public String currency;
     public Date date;
     public String url;
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String selectedItem;
+    Button patrykowy;
 
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
@@ -71,44 +73,32 @@ public class Miarystatystyczne extends AppCompatActivity {
         checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
         checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
         checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
-
-
+        final Button patrykowy = (Button)findViewById(R.id.button);
+        patrykowy.setEnabled(false);
 
         ListView lv = (ListView) findViewById(R.id.listViewForSessions);
         final TextView tv = (TextView) findViewById(R.id.tv);
-
         String[] sessions = new String []{"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
-
-        // Create a List from String Array elements
         List<String> session_list = new ArrayList<String>(Arrays.asList(sessions));
-
-        // Create a ArrayAdapter from List
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, session_list);
-
-        // Populate ListView with items from ArrayAdapter
         lv.setAdapter(arrayAdapter);
-
-        // Set an item click listener for ListView
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected item text from ListView
                 selectedItem = (String) parent.getItemAtPosition(position);
+                if(Usd || Gbp || Eur || Chf || Ru){
 
-                // Display the selected item text on TextView
-                tv.setText(selectedItem);
+                    patrykowy.setEnabled(true);
+                    tv.setText(selectedItem);
+                }
+                else{
+                }
+
             }
         });
-        //list = (ListView) findViewById(R.id.listViewForSessions);
 
-
-        //ArrayList<String> sessionSelect = new ArrayList<String>();
-       // sessionSelect.addAll(Arrays.asList(sessions));
-
-        //final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,sessionSelect);
-
-       // list.setAdapter(arrayAdapter);
     }
 
     public void onClickPatrykowy2(View w) {
