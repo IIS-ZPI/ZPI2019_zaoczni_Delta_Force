@@ -3,24 +3,9 @@ package com.example.financialappnbp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.view.View;
 import android.widget.Button;
-
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.Charset;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         kursyWalut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, *******.class);
+                Intent intent = new Intent(MainActivity.this, KursyWalut.class);
                 startActivity(intent);
             }
         });*/

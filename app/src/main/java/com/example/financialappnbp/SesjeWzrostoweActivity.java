@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -32,13 +31,10 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     public Date date;
     public String url;
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
-    private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    String selectedItem;
-
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
         final String[] outputString = {null};
-        Thread thread = new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
                 String responseString = null;
@@ -65,7 +61,6 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesje_wzrostowe);
-
 
         checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
