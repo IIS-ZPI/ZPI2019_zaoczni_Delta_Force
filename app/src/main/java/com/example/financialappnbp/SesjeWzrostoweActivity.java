@@ -2,6 +2,7 @@ package com.example.financialappnbp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ import java.util.Calendar;
 
 import com.example.financialappnbp.model.KursWaluty;
 import com.example.financialappnbp.model.Waluta;
+import com.github.mikephil.charting.charts.BarChart;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String selectedItem;
     Button patrykowy;
+    Button btnBarChart;
 
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
@@ -67,9 +70,11 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sesje_wzrostowe);
-
+        BarChart barChart = (BarChart) findViewById(R.id.barchart);
+        btnBarChart = findViewById(R.id.btnBarChart);
         checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
         checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
@@ -77,6 +82,14 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
         final Button patrykowy = (Button)findViewById(R.id.button);
         patrykowy.setEnabled(false);
+
+        btnBarChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent I = new Intent(SesjeWzrostoweActivity.this, BarChartActivity.class);
+                startActivity(I);
+            }
+        });
 
         ListView lv = (ListView) findViewById(R.id.listViewForSessions);
         final TextView tv2 = (TextView) findViewById(R.id.tv2);
