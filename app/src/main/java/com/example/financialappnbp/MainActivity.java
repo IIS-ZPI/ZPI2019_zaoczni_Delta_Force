@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
+
         kursyWalut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, KursyWalut.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }

@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +33,9 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     public Date date;
     public String url;
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String selectedItem;
+
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
         final String[] outputString = {null};
@@ -95,15 +100,6 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
                 tv2.setText(selectedItem);
             }
         });
-//        list = (ListView) findViewById(R.id.listViewForSessions);
-//        String sessions[] = {"Tydzień","Dwa tygodnie","Miesiąc","Kwartał","Półrocze","Rok"};
-//
-//        ArrayList<String> sessionSelect = new ArrayList<String>();
-//        sessionSelect.addAll(Arrays.asList(sessions));
-//
-//        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,sessionSelect);
-//
-//        list.setAdapter(arrayAdapter);
     }
 
     public void onClickPatrykowy(View w) {
