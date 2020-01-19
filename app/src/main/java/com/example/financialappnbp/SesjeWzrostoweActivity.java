@@ -33,6 +33,7 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     public String url;
     private CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBox5;
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String selectedItem;
 
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
@@ -93,7 +94,7 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected item text from ListView
-                String selectedItem = (String) parent.getItemAtPosition(position);
+                selectedItem = (String) parent.getItemAtPosition(position);
 
                 // Display the selected item text on TextView
                 tv2.setText(selectedItem);
@@ -114,31 +115,53 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
         Gson g = new Gson();
         if (Usd == true) {
             currency = "usd";
+
         } else if (Gbp == true) {
             currency = "gbp";
         } else if (Eur == true) {
             currency="eur";
         } else if (Chf==true){
             currency="chf";
-        } else if (Ru==true) {
+        } else if(Ru==true) {
             currency="ru";
         }
+        else {
+
+        }
+
         String dateToday = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(currentDate);
-        //ostatne tydzien
-       c.add(Calendar.WEEK_OF_MONTH, -1);
-        //ostatne 2 tyg
-       // c.add(Calendar.WEEK_OF_MONTH, -2);
-        //ostatni miesiąc
-       // c.add(Calendar.MONTH, -1);
-        //ostatni kwartał
-       // c.add(Calendar.MONTH, -3);
-        //ostatnie pół roku
-       // c.add(Calendar.MONTH, -6);
-        //ostatni rok
-       // c.add(Calendar.YEAR, -1);
+
+        if(selectedItem=="Tydzień") //ostatne tydzien
+        {
+            c.add(Calendar.WEEK_OF_MONTH, -1);
+        }
+        else if(selectedItem=="Dwa tygodnie") //ostatne 2 tyg
+        {
+            c.add(Calendar.WEEK_OF_MONTH, -2);
+        }
+        else if(selectedItem=="Miesiąc")  //ostatni miesiąć
+        {
+            c.add(Calendar.MONTH, -1);
+        }
+        else if(selectedItem=="Kwartał") //ostatni kwartał
+        {
+            c.add(Calendar.MONTH, -3);
+        }
+        else if(selectedItem=="Półrocze") // ostatnie pół roku
+        {
+            c.add(Calendar.MONTH, -6);
+        }
+        else if(selectedItem=="Rok")// ostatni rok
+        {
+            c.add(Calendar.YEAR, -1);
+        }
+        else {
+
+        }
+
         Date currentDatePlusOne = c.getTime();
         String dateFrom=dateFormat.format(currentDatePlusOne);
         String date=dateFrom+"/"+dateToday;
