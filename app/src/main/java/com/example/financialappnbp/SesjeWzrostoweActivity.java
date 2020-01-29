@@ -33,6 +33,9 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     private ListView list;
     private ListView listCurr;
     public Boolean Usd=false, Gbp=false, Eur=false, Chf=false, Ru=false;
+    Boolean ma=false;
+    Boolean wz=false;
+    Boolean st=false;
     public String currency;
     public Date date;
     public String url;
@@ -41,6 +44,8 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     String selectedItem;
     Button patrykowy;
     Button btnBarChart;
+    int malejace, stale, wzrostowe;
+    public TextView growth, constant, decreasing;
 
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
@@ -175,13 +180,52 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
         url=("https://api.nbp.pl/api/exchangerates/rates/c/"+currency+"/"+date+"/?format=json");
         System.out.println("url"+url);
+        List<Float> lista = new ArrayList<Float>();
+        int i=0;
         Waluta data = g.fromJson(getData(url), Waluta.class);
+        malejace=0; wzrostowe=0; stale=0;
         for (KursWaluty waluty : data.getRates()){
             System.out.println(waluty.getAsk()+  " + ");
+            lista.add(waluty.getAsk());
+            if(lista.size()>1) {
+                if(lista.get(lista.size()-1)<lista.get(lista.size()-2)) {
+                    wz=false;
+                    st=false;
+                    if(ma!=true){
+                        ma=true;
+                    malejace++;}
+                }
+                else if(lista.get(lista.size()-1)>lista.get(lista.size()-2)) {
+                    st=false;
+                    ma=false;
+                }
+                    if(wz!=true){
+                        wz=true;
+                    wzrostowe++;
+                }
+                else if(lista.get(lista.size()-1)==lista.get(lista.size()-2)) {
+                    wz=false;
+                    ma=false;
+                        if(st!=true){
+                            st=true;
+                            stale++;
+                    }
+                }
+            }
+            i++;
+            }
+        TextView constant=(TextView) findViewById(R.id.constant);
+        TextView growth=(TextView) findViewById(R.id.growth);
+        TextView decreasing=(TextView) findViewById(R.id.decreasing);
+        constant.setText("Stałe: "+stale);
+        decreasing.setText("Malejące: "+malejace);
+        growth.setText("Wzrostowe: "+wzrostowe);
+        
         }
+
         // String data1 = getData("https://api.nbp.pl/api/exchangerates/rates/c/usd/2016-04-04/?format=json");
         //textview3.setText(data.getCurrency().toString());
-    }
+
 
     public void onClickCheckBox1(View v) {
             checkBox2.setChecked(false);
