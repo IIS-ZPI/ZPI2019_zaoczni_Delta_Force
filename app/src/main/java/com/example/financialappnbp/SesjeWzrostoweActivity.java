@@ -2,7 +2,9 @@ package com.example.financialappnbp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,6 +48,8 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
     Button btnBarChart;
     int malejace, stale, wzrostowe;
     public TextView growth, constant, decreasing;
+    SharedPreferences pref;
+
 
     public static String getData(final String url) {
         final CountDownLatch latch = new CountDownLatch(1);
@@ -180,9 +184,9 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
 
         url=("https://api.nbp.pl/api/exchangerates/rates/c/"+currency+"/"+date+"/?format=json");
         System.out.println("url"+url);
-        List<Float> lista = new ArrayList<Float>();
-        int i=0;
         Waluta data = g.fromJson(getData(url), Waluta.class);
+
+        List<Float> lista = new ArrayList<>();
         malejace=0; wzrostowe=0; stale=0;
         for (KursWaluty waluty : data.getRates()){
             System.out.println(waluty.getAsk()+  " + ");
@@ -212,8 +216,8 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
                     }
                 }
             }
-            i++;
             }
+        saveRates(lista, pref);
         TextView constant=(TextView) findViewById(R.id.constant);
         TextView growth=(TextView) findViewById(R.id.growth);
         TextView decreasing=(TextView) findViewById(R.id.decreasing);
@@ -286,6 +290,15 @@ public class SesjeWzrostoweActivity extends AppCompatActivity {
             Eur=false;
             Chf=false;
             Ru=true;
+    }
+
+    public void saveRates(List<Float> taskArray, SharedPreferences pref) {
+        pref = getApplicationContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = pref.edit();
+        Gson gson = new Gson();
+        String s = gson.toJson(taskArray);
+        edit.putString("rates", s);
+        edit.apply();
     }
 
 }

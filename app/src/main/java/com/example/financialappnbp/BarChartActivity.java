@@ -1,5 +1,7 @@
 package com.example.financialappnbp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +11,18 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.List;
 
 
 public class BarChartActivity extends AppCompatActivity {
+
+    SharedPreferences pref;
+    List<Float> ratesList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,34 +30,32 @@ public class BarChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bar_chart);
         BarChart chart = findViewById(R.id.barchart);
 
+        pref = getApplicationContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        if (pref != null) {
+            Gson gson = new Gson();
+            Float[] rates = gson.fromJson(pref.getString("rates", null), Float[].class);
+            if (ratesList != null) {
+                ratesList = new ArrayList<>(Arrays.asList(rates));
+            }
+        }
+        if (ratesList == null) {
+            ratesList = new ArrayList<>();
+            System.out.println(pref.getString("rates", null));
+        }
+
+        System.out.println(ratesList);
+
         ArrayList NoOfEmp = new ArrayList();
-
-        NoOfEmp.add(new BarEntry(945f, 0));
-        NoOfEmp.add(new BarEntry(1040f, 1));
-        NoOfEmp.add(new BarEntry(1133f, 2));
-        NoOfEmp.add(new BarEntry(1240f, 3));
-        NoOfEmp.add(new BarEntry(1369f, 4));
-        NoOfEmp.add(new BarEntry(1487f, 5));
-        NoOfEmp.add(new BarEntry(1501f, 6));
-        NoOfEmp.add(new BarEntry(1645f, 7));
-        NoOfEmp.add(new BarEntry(1578f, 8));
-        NoOfEmp.add(new BarEntry(1695f, 9));
-
-        ArrayList year = new ArrayList();
-
-        year.add("2008");
-        year.add("2009");
-        year.add("2010");
-        year.add("2011");
-        year.add("2012");
-        year.add("2013");
-        year.add("2014");
-        year.add("2015");
-        year.add("2016");
-        year.add("2017");
+        ArrayList<String> year = new ArrayList();
+        int i=0;
+        for (Float rate: ratesList) {
+            NoOfEmp.add(new BarEntry(rate, i));
+            year.add(String.valueOf(i));
+            i++;
+        }
 
         BarDataSet bardataset = new BarDataSet(NoOfEmp, "No Of Employee");
-        chart.animateY(5000);
+        chart.animateY(2000);
         BarData data = new BarData(year, bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         chart.setData(data);
