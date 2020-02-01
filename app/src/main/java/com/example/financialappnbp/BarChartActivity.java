@@ -45,19 +45,20 @@ public class BarChartActivity extends AppCompatActivity {
 
         System.out.println(ratesList);
 
-        ArrayList NoOfEmp = new ArrayList();
+        ArrayList rateList = new ArrayList();
         ArrayList<String> year = new ArrayList();
         int i=0;
         for (Float rate: ratesList) {
-            NoOfEmp.add(new BarEntry(rate, i));
+            rateList.add(new BarEntry(rate, i));
             year.add(String.valueOf(i));
             i++;
         }
 
-        BarDataSet bardataset = new BarDataSet(NoOfEmp, "No Of Employee");
+        BarDataSet bardataset = new BarDataSet(rateList, "Rates");
         chart.animateY(2000);
         BarData data = new BarData(year, bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         chart.setData(data);
+        chart.setDescription("");
     }
 }
