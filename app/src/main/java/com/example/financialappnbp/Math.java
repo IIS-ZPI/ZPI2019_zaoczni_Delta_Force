@@ -18,8 +18,8 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
         return A * B;
     }
 
-    /*Addition of two values*/g
-    @Override
+    /*Addition of two values*/
+
     public double Addition(double A, double B) {
         return A + B;
     }
