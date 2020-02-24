@@ -19,7 +19,11 @@ public class Math implements IArithmeticsDiv, IArithmeticsAdd, IArithmeticsMult,
     }
 
     /*Addition of two values*/
+<<<<<<< HEAD
     @Override
+=======
+
+>>>>>>> 922e0b100b7c654540c0d4ed5e3dab4c0140ea32
     public double Addition(double A, double B) {
         return A + B;
     }
