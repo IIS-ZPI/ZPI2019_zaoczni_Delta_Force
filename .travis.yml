@@ -8,10 +8,10 @@ before_script:
 
 language: android
 jdk:
-  - oraclejdk11
+  - oraclejdk8
 before_install:
   - chmod +x gradlew
-  - yes | sdkmanager "platforms;android-24"
+  - yes | sdkmanager "platforms;android-29"
 
 dist: trusty
 android:
